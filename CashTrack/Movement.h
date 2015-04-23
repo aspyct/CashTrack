@@ -13,6 +13,6 @@
 @property NSNumber *pk;
 @property NSString *category;
 @property NSDecimalNumber *amount;
-@property NSString *date;
+@property NSDate *date;
 
 @end

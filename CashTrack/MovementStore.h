@@ -16,6 +16,6 @@
 
 - (void)countMovements:(void (^)(NSUInteger count))completion;
 
-- (void)listMovementsFrom:(NSUInteger)from to:(NSUInteger)to completion:(void (^)(NSArray *movements))completion;
+- (void)listMovementsFrom:(NSUInteger)offset limit:(NSUInteger)max completion:(void (^)(NSArray *))completion;
 
 @end

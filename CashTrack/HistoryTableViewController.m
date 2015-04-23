@@ -12,6 +12,8 @@
 
 @interface HistoryTableViewController ()
 
+@property NSArray *movements;
+
 @end
 
 @implementation HistoryTableViewController
@@ -33,6 +35,8 @@
                                              selector:@selector(goToSleep:)
                                                  name:UIApplicationDidEnterBackgroundNotification
                                                object:nil];
+    
+    [self refreshData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -57,6 +61,38 @@
     EntryTableViewController *entry = [self.storyboard instantiateViewControllerWithIdentifier:@"entryViewController"];
     [self prepareEntryForNewMovement:entry];
     [self.navigationController pushViewController:entry animated:NO];
+}
+
+#pragma mark - TableView stuff
+
+- (void)refreshData
+{
+    [self.movementStore listMovementsFrom:0 limit:9999999 completion:^(NSArray *movements) {
+        self.movements = movements;
+        [self.tableView reloadData];
+    }];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.movements.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    Movement *movement = self.movements[indexPath.row];
+    
+    cell.textLabel.text = movement.category;
+    cell.detailTextLabel.text = movement.amount.stringValue;
+    
+    return cell;
 }
 
 #pragma mark - Segue preparation
