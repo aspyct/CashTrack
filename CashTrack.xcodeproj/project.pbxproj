@@ -20,6 +20,8 @@
 		FD6D82F11AE7C8FB00ABED11 /* Movement.m in Sources */ = {isa = PBXBuildFile; fileRef = FD6D82F01AE7C8FB00ABED11 /* Movement.m */; };
 		FD6D82F41AE7E2FA00ABED11 /* MovementStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FD6D82F31AE7E2FA00ABED11 /* MovementStore.m */; };
 		FD6D82F81AE976E900ABED11 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FD6D82F71AE976E900ABED11 /* Podfile */; };
+		FD6D82FA1AEA568500ABED11 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FD6D82F91AEA568500ABED11 /* Settings.bundle */; };
+		FD6D82FF1AEA5B0000ABED11 /* CSVExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = FD6D82FE1AEA5B0000ABED11 /* CSVExporter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		FD6D82F21AE7E2FA00ABED11 /* MovementStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementStore.h; sourceTree = "<group>"; };
 		FD6D82F31AE7E2FA00ABED11 /* MovementStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementStore.m; sourceTree = "<group>"; };
 		FD6D82F71AE976E900ABED11 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		FD6D82F91AEA568500ABED11 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		FD6D82FD1AEA5B0000ABED11 /* CSVExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVExporter.h; sourceTree = "<group>"; };
+		FD6D82FE1AEA5B0000ABED11 /* CSVExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVExporter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				FD6D82F71AE976E900ABED11 /* Podfile */,
+				FD6D82F91AEA568500ABED11 /* Settings.bundle */,
 				FD6D82BC1AE7A4D900ABED11 /* CashTrack */,
 				FD6D82D61AE7A4D900ABED11 /* CashTrackTests */,
 				FD6D82BB1AE7A4D900ABED11 /* Products */,
@@ -250,6 +256,7 @@
 			files = (
 				FD6D82C91AE7A4D900ABED11 /* Main.storyboard in Resources */,
 				FD6D82CE1AE7A4D900ABED11 /* LaunchScreen.xib in Resources */,
+				FD6D82FA1AEA568500ABED11 /* Settings.bundle in Resources */,
 				FD6D82F81AE976E900ABED11 /* Podfile in Resources */,
 				FD6D82CB1AE7A4D900ABED11 /* Images.xcassets in Resources */,
 			);
