@@ -16,6 +16,7 @@
 @interface HistoryTableViewController ()
 
 @property NSArray *movements;
+@property (nonatomic) NSNumberFormatter *formatter;
 
 @end
 
@@ -27,7 +28,16 @@
 {
     [super viewDidLoad];
     
+    // When the app starts, we open the "new entry" screen immediately
     [self openNewEntryScreen];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    DDLogVerbose(@"Loading cash history");
+    [self refreshData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -38,8 +48,6 @@
                                              selector:@selector(goToSleep:)
                                                  name:UIApplicationDidEnterBackgroundNotification
                                                object:nil];
-    
-    [self refreshData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -55,6 +63,7 @@
 
 - (void)goToSleep:(NSNotification *)notification
 {
+    // Next time the app wakes up, we're on the "new entry" screen
     [self openNewEntryScreen];
 }
 
@@ -93,7 +102,7 @@
     Movement *movement = self.movements[indexPath.row];
     
     cell.textLabel.text = movement.category;
-    cell.detailTextLabel.text = movement.amount.stringValue;
+    cell.detailTextLabel.text = [self.formatter stringFromNumber:movement.amount];;
     
     return cell;
 }
@@ -105,6 +114,18 @@
     entryViewController.movement = [[Movement alloc] init];
 }
 
+- (void)prepareEntryForEdit:(EntryTableViewController *)entryViewController
+{
+    Movement *movement = [self selectedMovement];
+    entryViewController.movement = movement;
+}
+
+- (Movement *)selectedMovement
+{
+    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+    return self.movements[indexPath.row];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -112,7 +133,7 @@
         [self prepareEntryForNewMovement:segue.destinationViewController];
     }
     else if ([segue.identifier isEqualToString:@"edit"]) {
-        
+        [self prepareEntryForEdit:segue.destinationViewController];
     }
 }
 
@@ -128,6 +149,24 @@
             DDLogVerbose(@"Movement saved");
         }
         else {
+            DDLogVerbose(@"Could not save movement");
+        }
+    }];
+}
+
+- (IBAction)unwindAndDeleteMovement:(UIStoryboardSegue *)segue
+{
+    NSAssert([segue.sourceViewController isKindOfClass:[EntryTableViewController class]],
+             @"Only EntryTableViewController can use this segue");
+    
+    EntryTableViewController *entry = segue.sourceViewController;
+    DDLogVerbose(@"Deleting movement: %@", entry.movement);
+    
+    [self.movementStore deleteMovement:entry.movement completion:^(BOOL success) {
+        if (success) {
+            DDLogVerbose(@"Movement deleted");
+        }
+        else {
             DDLogVerbose(@"Could not delete movement");
         }
     }];
@@ -140,6 +179,17 @@
     
     UIActivityViewController *vc = [[UIActivityViewController alloc] initWithActivityItems:@[exporter] applicationActivities:nil];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (NSNumberFormatter *)formatter
+{
+    if (_formatter == nil) {
+        _formatter = [[NSNumberFormatter alloc] init];
+        _formatter.maximumFractionDigits = 2;
+        _formatter.minimumFractionDigits = 2;
+    }
+    
+    return _formatter;
 }
 
 @end
