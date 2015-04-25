@@ -206,6 +206,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="History" id="cUF-tb-zag">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="MuJ-rT-Kg9">
+                            <connections>
+                                <action selector="doOpenActivity:" destination="mSQ-sQ-e9Y" id="kvS-Ew-T2R"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Asd-td-kUa">
                             <connections>
                                 <segue destination="phw-Aj-uvI" kind="show" identifier="add" id="Nbh-Jw-eae"/>

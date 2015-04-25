@@ -8,6 +8,7 @@
 
 #import "HistoryTableViewController.h"
 
+#import "CSVExporter.h"
 #import "EntryTableViewController.h"
 
 @interface HistoryTableViewController ()
@@ -128,6 +129,15 @@
             NSLog(@"Could not save movement");
         }
     }];
+}
+
+- (IBAction)doOpenActivity:(id)sender
+{
+    CSVExporter *exporter = [[CSVExporter alloc] init];
+    exporter.movementStore = self.movementStore;
+    
+    UIActivityViewController *vc = [[UIActivityViewController alloc] initWithActivityItems:@[exporter] applicationActivities:nil];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

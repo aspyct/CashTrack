@@ -138,6 +138,8 @@
 				FD6D82F01AE7C8FB00ABED11 /* Movement.m */,
 				FD6D82F21AE7E2FA00ABED11 /* MovementStore.h */,
 				FD6D82F31AE7E2FA00ABED11 /* MovementStore.m */,
+				FD6D82FD1AEA5B0000ABED11 /* CSVExporter.h */,
+				FD6D82FE1AEA5B0000ABED11 /* CSVExporter.m */,
 				FD6D82C71AE7A4D900ABED11 /* Main.storyboard */,
 				FD6D82CA1AE7A4D900ABED11 /* Images.xcassets */,
 				FD6D82CC1AE7A4D900ABED11 /* LaunchScreen.xib */,
@@ -314,6 +316,7 @@
 				FD6D82E81AE7A54E00ABED11 /* HistoryTableViewController.m in Sources */,
 				FD6D82EB1AE7A58300ABED11 /* EntryTableViewController.m in Sources */,
 				FD6D82EE1AE7C82300ABED11 /* CategoryTableViewController.m in Sources */,
+				FD6D82FF1AEA5B0000ABED11 /* CSVExporter.m in Sources */,
 				FD6D82F41AE7E2FA00ABED11 /* MovementStore.m in Sources */,
 				FD6D82C01AE7A4D900ABED11 /* main.m in Sources */,
 			);
