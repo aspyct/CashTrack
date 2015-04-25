@@ -184,7 +184,7 @@
     [self inBackground:^{
         [self.queue inDatabase:^(FMDatabase *db) {
             [db executeStatements:@""
-             "CREATE TABLE movements ("
+             "CREATE TABLE IF NOT EXISTS movements ("
              "pk INTEGER PRIMARY KEY AUTOINCREMENT,"
              "category TEXT,"
              "amount DECIMAL(10,2),"
