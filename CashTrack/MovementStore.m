@@ -143,7 +143,7 @@
             }
             else {
                 if (rows > 1) {
-                    NSLog(@"Too many rows affected: %i", rows);
+                    DDLogError(@"Too many rows affected: %i", rows);
                 }
                 
                 [self onMainThread:^{

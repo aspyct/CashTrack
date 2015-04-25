@@ -8,6 +8,8 @@
 
 #import "EntryTableViewController.h"
 
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
 #import "CategoryTableViewController.h"
 
 @interface EntryTableViewController ()
@@ -46,9 +48,9 @@
 
 - (void)updateMovement
 {
-    NSLog(@"Updating movement");
     self.movement.amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text
                                                              locale:[NSLocale currentLocale]];
+    DDLogVerbose(@"Updating movement");
     self.movement.category = self.categoryLabel.text;
 }
 

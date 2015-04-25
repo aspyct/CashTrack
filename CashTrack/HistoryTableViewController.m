@@ -8,6 +8,8 @@
 
 #import "HistoryTableViewController.h"
 
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
 #import "CSVExporter.h"
 #import "EntryTableViewController.h"
 
@@ -120,13 +122,13 @@
              @"Only EntryTableViewController can use this segue");
     
     EntryTableViewController *entry = segue.sourceViewController;
-    NSLog(@"Saving movement: %@", entry.movement);
+    DDLogVerbose(@"Saving movement: %@", entry.movement);
     [self.movementStore saveMovement:entry.movement completion:^(BOOL success) {
         if (success) {
-            NSLog(@"Movement saved");
+            DDLogVerbose(@"Movement saved");
         }
         else {
-            NSLog(@"Could not save movement");
+            DDLogVerbose(@"Could not delete movement");
         }
     }];
 }
