@@ -14,7 +14,11 @@
 
 - (void)saveMovement:(Movement *)movement completion:(void (^)(BOOL success))completion;
 
+- (void)deleteMovement:(Movement *)movement completion:(void (^)(BOOL success))completion;
+
 - (void)countMovements:(void (^)(NSUInteger count))completion;
+
+- (NSArray *)listMovementsFrom:(NSUInteger)offset limit:(NSUInteger)max;
 
 - (void)listMovementsFrom:(NSUInteger)offset limit:(NSUInteger)max completion:(void (^)(NSArray *))completion;
 

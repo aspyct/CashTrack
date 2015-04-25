@@ -45,28 +45,69 @@
     }];
 }
 
-- (void)listMovementsFrom:(NSUInteger)offset limit:(NSUInteger)max completion:(void (^)(NSArray *))completion
+- (void)deleteMovement:(Movement *)movement completion:(void (^)(BOOL))completion
 {
     [self inBackground:^{
         [self.queue inDatabase:^(FMDatabase *db) {
-            FMResultSet *rs = [db executeQuery:@"SELECT pk, category, amount, date FROM movements LIMIT ? OFFSET ?",
-                               @(max), @(offset)];
+            BOOL success = [db executeUpdate:@"DELETE FROM movements WHERE pk = ?", movement.pk];
             
-            NSMutableArray *array = [NSMutableArray arrayWithCapacity:max];
-            while ([rs next]) {
-                Movement *movement = [[Movement alloc] init];
-                movement.pk = @([rs longLongIntForColumnIndex:0]);
-                movement.category = [rs stringForColumnIndex:1];
-                movement.amount = [NSDecimalNumber decimalNumberWithString:[rs stringForColumnIndex:2]
-                                                                    locale:[NSLocale currentLocale]];
-                movement.date = [rs dateForColumnIndex:3];
+            if (success) {
+                int rows = [db changes];
                 
-                [array addObject:movement];
+                if (rows == 1) {
+                    [self onMainThread:^{
+                        completion(YES);
+                    }];
+                }
+                else {
+                    if (rows > 1) {
+                        DDLogError(@"Deleted more than 1 row");
+                    }
+                    
+                    [self onMainThread:^{
+                        completion(NO);
+                    }];
+                }
             }
+            else {
+                DDLogError(@"Could not execute the query: %@", [db lastErrorMessage]);
+                [self onMainThread:^{
+                    completion(NO);
+                }];
+            }
+        }];
+    }];
+}
+
+- (NSArray *)listMovementsFrom:(NSUInteger)offset limit:(NSUInteger)max
+{
+    NSMutableArray *movements = [NSMutableArray arrayWithCapacity:max];
+    
+    [self.queue inDatabase:^(FMDatabase *db) {
+        FMResultSet *rs = [db executeQuery:@"SELECT pk, category, amount, date FROM movements ORDER BY date DESC LIMIT ? OFFSET ?",
+                           @(max), @(offset)];
+        
+        while ([rs next]) {
+            Movement *movement = [[Movement alloc] init];
+            movement.pk = @([rs longLongIntForColumnIndex:0]);
+            movement.category = [rs stringForColumnIndex:1];
+            movement.amount = [NSDecimalNumber decimalNumberWithString:[rs stringForColumnIndex:2]];
+            movement.date = [rs dateForColumnIndex:3];
             
-            [self onMainThread:^{
-                completion(array);
-            }];
+            [movements addObject:movement];
+        }
+    }];
+    
+    return movements;
+}
+
+- (void)listMovementsFrom:(NSUInteger)offset limit:(NSUInteger)max completion:(void (^)(NSArray *))completion
+{
+    [self inBackground:^{
+        NSArray *movements = [self listMovementsFrom:offset limit:max];
+        
+        [self onMainThread:^{
+            completion(movements);
         }];
     }];
 }
