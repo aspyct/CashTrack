@@ -36,7 +36,7 @@
 - (void)saveMovement:(Movement *)movement completion:(void (^)(BOOL))completion
 {
     [self inBackground:^{
-        if (movement.pk == nil) {
+        if (![movement existsInDatabase]) {
             [self insertMovement:movement completion:completion];
         }
         else {

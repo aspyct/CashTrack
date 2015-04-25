@@ -15,4 +15,6 @@
 @property NSDecimalNumber *amount;
 @property NSDate *date;
 
+- (BOOL)existsInDatabase;
+
 @end

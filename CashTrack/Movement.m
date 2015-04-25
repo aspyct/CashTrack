@@ -10,4 +10,9 @@
 
 @implementation Movement
 
+- (BOOL)existsInDatabase
+{
+    return self.pk != nil;
+}
+
 @end
