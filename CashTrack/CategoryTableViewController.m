@@ -10,13 +10,45 @@
 
 @interface CategoryTableViewController ()
 
+@property NSArray *categories;
+
 @end
 
 @implementation CategoryTableViewController
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)viewDidLoad
 {
+    [super viewDidLoad];
     
+    self.categories = @[@"Lunch",
+                        @"Food",
+                        @"Friends",
+                        @"Company",
+                        @"Recreation",
+                        @"Miscellaneous",
+                        @"Sport",
+                        @"Health",
+                        @"Home"];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.categories count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    cell.textLabel.text = self.categories[indexPath.row];
+    
+    return cell;
+}
+
+- (NSString *)categoryName
+{
+    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+    return self.categories[indexPath.row];
 }
 
 @end
