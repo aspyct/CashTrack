@@ -73,9 +73,14 @@
 
 - (void)updateForm
 {
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.maximumFractionDigits = 2;
-    self.amountTextField.text = [formatter stringFromNumber:self.movement.amount];
+    if (self.movement.amount != nil) {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.maximumFractionDigits = 2;
+        self.amountTextField.text = [formatter stringFromNumber:self.movement.amount];
+        
+        BOOL positive = self.movement.amount.decimalValue._isNegative ? NO : YES;
+        self.plusMinusSegment.selectedSegmentIndex = positive ? 0 : 1;
+    }
     
     // Remove the "delete" button if the movement is not saved yet
     if (![self.movement existsInDatabase]) {
