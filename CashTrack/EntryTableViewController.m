@@ -46,7 +46,9 @@
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     [self updateMovement];
+    
     if ([identifier isEqualToString:@"save"]) {
+        // Can't save an invalid form
         if ([self.movement validate]) {
             return YES;
         }
@@ -96,15 +98,17 @@
 
 - (void)updateMovement
 {
-    DDLogVerbose(@"Updating movement");
-    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text
-                                                                locale:[NSLocale currentLocale]];
+    self.movement.amount = ({
+        NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text
+                                                                    locale:[NSLocale currentLocale]];
+        
+        if (isnan(amount.doubleValue)) {
+            amount = nil;
+        }
+        
+        amount;
+    });
     
-    if (isnan(amount.doubleValue)) {
-        amount = nil;
-    }
-    
-    self.movement.amount = amount;
     BOOL positive = self.plusMinusSegment.selectedSegmentIndex == 0;
     [self.movement setSign:positive];
     
