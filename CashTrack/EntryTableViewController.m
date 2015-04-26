@@ -32,6 +32,8 @@
     [self.amountTextField becomeFirstResponder];
 }
 
+#pragma mark - Navigation
+
 - (IBAction)unwindAndSetCategory:(UIStoryboardSegue *)segue
 {
     NSAssert([segue.sourceViewController isKindOfClass:[CategoryTableViewController class]],
@@ -39,6 +41,29 @@
     
     CategoryTableViewController *categoryTable = segue.sourceViewController;
     self.categoryLabel.text = categoryTable.categoryName;
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    [self updateMovement];
+    if ([identifier isEqualToString:@"save"]) {
+        if ([self.movement validate]) {
+            return YES;
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid amount"
+                                                            message:@"The entered amount is invalid"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+            return NO;
+        }
+    }
+    else {
+        return YES;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -63,6 +88,10 @@
     DDLogVerbose(@"Updating movement");
     NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:self.amountTextField.text
                                                                 locale:[NSLocale currentLocale]];
+    
+    if (isnan(amount.doubleValue)) {
+        amount = nil;
+    }
     
     if (self.plusMinusSegment.selectedSegmentIndex == 1) {
         // negative

@@ -16,5 +16,6 @@
 @property NSDate *date;
 
 - (BOOL)existsInDatabase;
+- (BOOL)validate;
 
 @end

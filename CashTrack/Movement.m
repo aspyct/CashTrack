@@ -15,4 +15,9 @@
     return self.pk != nil;
 }
 
+- (BOOL)validate
+{
+    return self.amount != nil;
+}
+
 @end
