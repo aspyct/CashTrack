@@ -17,5 +17,6 @@
 
 - (BOOL)existsInDatabase;
 - (BOOL)validate;
+- (void)setSign:(BOOL)positive;
 
 @end

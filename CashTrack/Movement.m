@@ -20,4 +20,13 @@
     return self.amount != nil;
 }
 
+- (void)setSign:(BOOL)positive
+{
+    if (self.amount != nil) {
+        NSDecimal decimal = self.amount.decimalValue;
+        decimal._isNegative = !positive;
+        self.amount = [NSDecimalNumber decimalNumberWithDecimal:decimal];
+    }
+}
+
 @end

@@ -93,10 +93,9 @@
         amount = nil;
     }
     
-    if (self.plusMinusSegment.selectedSegmentIndex == 1) {
-        // negative
-        self.movement.amount = [amount decimalNumberByMultiplyingBy:(NSDecimalNumber *)[NSDecimalNumber numberWithInt:-1]];
-    }
+    self.movement.amount = amount;
+    BOOL positive = self.plusMinusSegment.selectedSegmentIndex == 0;
+    [self.movement setSign:positive];
     
     self.movement.category = self.categoryLabel.text;
     
