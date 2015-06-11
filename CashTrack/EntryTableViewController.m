@@ -90,6 +90,10 @@
         });
     }
     
+    if (self.movement.category != nil) {
+        self.categoryLabel.text = self.movement.category;
+    }
+    
     // Remove the "delete" button if the movement is not saved yet
     if (![self.movement existsInDatabase]) {
         self.navigationItem.rightBarButtonItem = nil;
