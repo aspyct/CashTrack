@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4759163F73B7A9A18FE440CA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F266B950C32830A5EB12811B /* libPods.a */; };
+		FD3DBB6D1B25AAE200FEAE61 /* PieChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3DBB6C1B25AAE200FEAE61 /* PieChartTableViewCell.m */; };
 		FD6D82C01AE7A4D900ABED11 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD6D82BF1AE7A4D900ABED11 /* main.m */; };
 		FD6D82C31AE7A4D900ABED11 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD6D82C21AE7A4D900ABED11 /* AppDelegate.m */; };
 		FD6D82C91AE7A4D900ABED11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6D82C71AE7A4D900ABED11 /* Main.storyboard */; };
@@ -22,6 +23,8 @@
 		FD6D82F81AE976E900ABED11 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FD6D82F71AE976E900ABED11 /* Podfile */; };
 		FD6D82FA1AEA568500ABED11 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FD6D82F91AEA568500ABED11 /* Settings.bundle */; };
 		FD6D82FF1AEA5B0000ABED11 /* CSVExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = FD6D82FE1AEA5B0000ABED11 /* CSVExporter.m */; };
+		FDC102C21B25E4BF005D729D /* CategoryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC102C11B25E4BF005D729D /* CategoryStore.m */; };
+		FDC5C3CD1B25B90200F243D0 /* SeriesItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C3CC1B25B90200F243D0 /* SeriesItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,8 @@
 		1B3EE3B273106140E0537BE6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4D4665A8008BF4D328E480E4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F266B950C32830A5EB12811B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD3DBB6B1B25AAE200FEAE61 /* PieChartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartTableViewCell.h; sourceTree = "<group>"; };
+		FD3DBB6C1B25AAE200FEAE61 /* PieChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartTableViewCell.m; sourceTree = "<group>"; };
 		FD6D82BA1AE7A4D900ABED11 /* CashTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD6D82BE1AE7A4D900ABED11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD6D82BF1AE7A4D900ABED11 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,6 +68,10 @@
 		FD6D82F91AEA568500ABED11 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		FD6D82FD1AEA5B0000ABED11 /* CSVExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVExporter.h; sourceTree = "<group>"; };
 		FD6D82FE1AEA5B0000ABED11 /* CSVExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVExporter.m; sourceTree = "<group>"; };
+		FDC102C01B25E4BF005D729D /* CategoryStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryStore.h; sourceTree = "<group>"; };
+		FDC102C11B25E4BF005D729D /* CategoryStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryStore.m; sourceTree = "<group>"; };
+		FDC5C3CB1B25B90200F243D0 /* SeriesItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeriesItem.h; sourceTree = "<group>"; };
+		FDC5C3CC1B25B90200F243D0 /* SeriesItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeriesItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +149,12 @@
 				FD6D82F31AE7E2FA00ABED11 /* MovementStore.m */,
 				FD6D82FD1AEA5B0000ABED11 /* CSVExporter.h */,
 				FD6D82FE1AEA5B0000ABED11 /* CSVExporter.m */,
+				FD3DBB6B1B25AAE200FEAE61 /* PieChartTableViewCell.h */,
+				FD3DBB6C1B25AAE200FEAE61 /* PieChartTableViewCell.m */,
+				FDC5C3CB1B25B90200F243D0 /* SeriesItem.h */,
+				FDC5C3CC1B25B90200F243D0 /* SeriesItem.m */,
+				FDC102C01B25E4BF005D729D /* CategoryStore.h */,
+				FDC102C11B25E4BF005D729D /* CategoryStore.m */,
 				FD6D82C71AE7A4D900ABED11 /* Main.storyboard */,
 				FD6D82CA1AE7A4D900ABED11 /* Images.xcassets */,
 				FD6D82CC1AE7A4D900ABED11 /* LaunchScreen.xib */,
@@ -220,6 +235,7 @@
 		FD6D82B21AE7A4D900ABED11 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Aspyct;
 				TargetAttributes = {
@@ -316,7 +332,10 @@
 				FD6D82E81AE7A54E00ABED11 /* HistoryTableViewController.m in Sources */,
 				FD6D82EB1AE7A58300ABED11 /* EntryTableViewController.m in Sources */,
 				FD6D82EE1AE7C82300ABED11 /* CategoryTableViewController.m in Sources */,
+				FDC5C3CD1B25B90200F243D0 /* SeriesItem.m in Sources */,
+				FD3DBB6D1B25AAE200FEAE61 /* PieChartTableViewCell.m in Sources */,
 				FD6D82FF1AEA5B0000ABED11 /* CSVExporter.m in Sources */,
+				FDC102C21B25E4BF005D729D /* CategoryStore.m in Sources */,
 				FD6D82F41AE7E2FA00ABED11 /* MovementStore.m in Sources */,
 				FD6D82C01AE7A4D900ABED11 /* main.m in Sources */,
 			);
@@ -445,6 +464,7 @@
 			baseConfigurationReference = 1B3EE3B273106140E0537BE6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CashTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -456,6 +476,7 @@
 			baseConfigurationReference = 4D4665A8008BF4D328E480E4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CashTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

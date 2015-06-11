@@ -11,6 +11,8 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import <FMDB/FMDB.h>
 
+#import "SeriesItem.h"
+
 @interface MovementStore ()
 
 @property FMDatabaseQueue *queue;
@@ -125,6 +127,33 @@
                     completion(count);
                 }];
             }
+        }];
+    }];
+}
+
+- (void)summarizeExpenses:(void (^)(NSArray *))completion
+{
+    [self inBackground:^{
+        [self.queue inDatabase:^(FMDatabase *db) {
+            FMResultSet *rs = [db executeQuery:@""
+                               "SELECT category, ABS(SUM(amount)) as total "
+                               "FROM movements "
+                               "GROUP BY category "
+                               "HAVING SUM(amount) < 0 "
+                               "ORDER BY total DESC"];
+            
+            NSMutableArray *summary = [NSMutableArray array];
+            while([rs next]) {
+                SeriesItem *item = [[SeriesItem alloc] init];
+                item.name = [rs stringForColumnIndex:0];
+                item.amount = [NSDecimalNumber decimalNumberWithString:[rs stringForColumnIndex:1]];
+                
+                [summary addObject:item];
+            }
+            
+            [self onMainThread:^{
+                completion(summary);
+            }];
         }];
     }];
 }

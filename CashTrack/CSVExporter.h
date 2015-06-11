@@ -14,4 +14,6 @@
 
 @property MovementStore *movementStore;
 
+- (instancetype)init;
+
 @end

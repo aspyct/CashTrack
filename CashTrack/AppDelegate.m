@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "CategoryStore.h"
+
 @interface AppDelegate ()
 
 @end
@@ -16,6 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [CategoryStore initializeStore];
+    
     // Override point for customization after application launch.
     return YES;
 }

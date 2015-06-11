@@ -1,5 +1,6 @@
 pod 'CocoaLumberjack'
 pod 'FMDB/standalone'
+pod 'XYPieChart'
 
 post_install do | installer |
     require 'fileutils'

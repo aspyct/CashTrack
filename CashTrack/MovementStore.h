@@ -22,4 +22,6 @@
 
 - (void)listMovementsFrom:(NSUInteger)offset limit:(NSUInteger)max completion:(void (^)(NSArray *))completion;
 
+- (void)summarizeExpenses:(void (^)(NSArray *summary))completion;
+
 @end

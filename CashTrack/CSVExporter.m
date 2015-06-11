@@ -12,8 +12,7 @@
 
 - (instancetype)init
 {
-    self = [super initWithPlaceholderItem:[[NSBundle mainBundle] URLForResource:@"export"
-                                                                  withExtension:@"csv"]];
+    self = [super initWithPlaceholderItem:[NSURL fileURLWithPath:[self pathToExport]]];
     
     if (self) {
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -24,7 +23,6 @@
     }
     
     return self;
-    
 }
 
 - (id)item

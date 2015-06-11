@@ -12,7 +12,7 @@
 
 #import "CategoryTableViewController.h"
 
-@interface EntryTableViewController () <UIAlertViewDelegate>
+@interface EntryTableViewController () <UIAlertViewDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;

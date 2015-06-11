@@ -12,6 +12,7 @@
 
 #import "CSVExporter.h"
 #import "EntryTableViewController.h"
+#import "PieChartTableViewCell.h"
 
 @interface HistoryTableViewController ()
 
@@ -87,17 +88,63 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.movements.count;
+    if (section == 0) { // Summary
+        return 1;
+    }
+    else { // Details
+        return self.movements.count;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) { // Summary
+        return @"Summary";
+    }
+    else { // Details
+        return @"Details";
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) { // Summary
+        return 320;
+    }
+    else {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (indexPath.section == 0) { // Summary
+        return [self makeSummaryCell:tableView];
+    }
+    else {
+        return [self makeDetailsCell:tableView forIndexPath:indexPath];
+    }
+}
+
+- (UITableViewCell *)makeSummaryCell:(UITableView *)tableView
+{
+    PieChartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
+    
+    [self.movementStore summarizeExpenses:^(NSArray *summary) {
+        cell.series = summary;
+    }];
+    
+    return cell;
+}
+
+- (UITableViewCell *)makeDetailsCell:(UITableView *)tableView forIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailsCell"];
     
     Movement *movement = self.movements[indexPath.row];
     
