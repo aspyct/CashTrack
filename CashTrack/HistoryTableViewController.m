@@ -158,7 +158,9 @@
 
 - (void)prepareEntryForNewMovement:(EntryTableViewController *)entryViewController
 {
-    entryViewController.movement = [[Movement alloc] init];
+    Movement *movement = [[Movement alloc] init];
+    movement.date = [NSDate date];
+    entryViewController.movement = movement;
 }
 
 - (void)prepareEntryForEdit:(EntryTableViewController *)entryViewController
