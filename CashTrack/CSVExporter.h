@@ -14,6 +14,6 @@
 
 @property MovementStore *movementStore;
 
-- (instancetype)init;
+- (instancetype)initCSVExporter;
 
 @end

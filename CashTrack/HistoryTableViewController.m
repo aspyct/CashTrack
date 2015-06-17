@@ -221,7 +221,7 @@
 
 - (IBAction)doOpenActivity:(id)sender
 {
-    CSVExporter *exporter = [[CSVExporter alloc] init];
+    CSVExporter *exporter = [[CSVExporter alloc] initCSVExporter];
     exporter.movementStore = self.movementStore;
     
     UIActivityViewController *vc = [[UIActivityViewController alloc] initWithActivityItems:@[exporter] applicationActivities:nil];

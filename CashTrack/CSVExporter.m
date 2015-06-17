@@ -10,7 +10,7 @@
 
 @implementation CSVExporter
 
-- (instancetype)init
+- (instancetype)initCSVExporter
 {
     self = [super initWithPlaceholderItem:[NSURL fileURLWithPath:[self pathToExport]]];
     
