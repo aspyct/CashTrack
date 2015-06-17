@@ -16,13 +16,24 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *plusMinusSegment;
+
+@property NSDateFormatter *dateFormatter;
 
 @end
 
 @implementation EntryTableViewController
 
 #pragma mark - Lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -94,6 +105,10 @@
         self.categoryLabel.text = self.movement.category;
     }
     
+    if (self.movement.date != nil) {
+        self.dateLabel.text = [self.dateFormatter stringFromDate:self.movement.date];
+    }
+    
     // Remove the "delete" button if the movement is not saved yet
     if (![self.movement existsInDatabase]) {
         self.navigationItem.rightBarButtonItem = nil;
@@ -140,6 +155,11 @@
     if (buttonIndex != alertView.cancelButtonIndex) {
         [self performSegueWithIdentifier:@"delete" sender:self];
     }
+}
+
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    
 }
 
 @end

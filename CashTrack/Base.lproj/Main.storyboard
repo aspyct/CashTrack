@@ -160,6 +160,7 @@
                     <connections>
                         <outlet property="amountTextField" destination="2s1-Oj-hcY" id="9fL-Pv-Xy0"/>
                         <outlet property="categoryLabel" destination="wev-Fk-Kka" id="XaR-Qq-Tca"/>
+                        <outlet property="dateLabel" destination="at3-2u-lEi" id="bg5-S3-l4n"/>
                         <outlet property="plusMinusSegment" destination="ncV-aK-l3Y" id="W3z-Pi-h7q"/>
                         <segue destination="RxX-Gb-5lq" kind="unwind" identifier="delete" unwindAction="unwindAndDeleteMovement:" id="abO-yX-Plr"/>
                     </connections>
