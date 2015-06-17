@@ -40,7 +40,7 @@
              @"Only the CategoryTableViewController can use this unwind");
     
     CategoryTableViewController *categoryTable = segue.sourceViewController;
-    self.categoryLabel.text = categoryTable.categoryName;
+    self.movement.category = categoryTable.categoryName;
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
