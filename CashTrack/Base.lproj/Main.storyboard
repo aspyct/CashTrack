@@ -64,8 +64,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2s1-Oj-hcY">
-                                                    <rect key="frame" x="108" y="7" width="484" height="30"/>
-                                                    <accessibility key="accessibilityConfiguration" identifier="amount_field" label="amount field"/>
+                                                    <rect key="frame" x="115" y="7" width="477" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" label="amount field"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                     <connections>
@@ -73,18 +73,19 @@
                                                     </connections>
                                                 </textField>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="ncV-aK-l3Y">
-                                                    <rect key="frame" x="8" y="7" width="92" height="29"/>
+                                                    <rect key="frame" x="15" y="7" width="92" height="29"/>
                                                     <segments>
                                                         <segment title="plus"/>
                                                         <segment title="minus"/>
                                                     </segments>
+                                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="2s1-Oj-hcY" secondAttribute="bottom" constant="-2" id="0bx-9f-6In"/>
                                                 <constraint firstItem="ncV-aK-l3Y" firstAttribute="top" secondItem="mzN-MH-KyS" secondAttribute="topMargin" constant="-1" id="2Sk-CM-TfG"/>
                                                 <constraint firstItem="ncV-aK-l3Y" firstAttribute="bottom" secondItem="mzN-MH-KyS" secondAttribute="bottomMargin" id="42D-Ma-deo"/>
-                                                <constraint firstItem="ncV-aK-l3Y" firstAttribute="leading" secondItem="mzN-MH-KyS" secondAttribute="leadingMargin" id="C7K-Y8-bBm"/>
+                                                <constraint firstItem="ncV-aK-l3Y" firstAttribute="leading" secondItem="mzN-MH-KyS" secondAttribute="leadingMargin" constant="7" id="C7K-Y8-bBm"/>
                                                 <constraint firstItem="2s1-Oj-hcY" firstAttribute="trailing" secondItem="mzN-MH-KyS" secondAttribute="trailingMargin" id="KAj-pf-zoM"/>
                                                 <constraint firstItem="2s1-Oj-hcY" firstAttribute="top" secondItem="mzN-MH-KyS" secondAttribute="topMargin" constant="-1" id="o4E-M3-4tn"/>
                                                 <constraint firstItem="2s1-Oj-hcY" firstAttribute="leading" secondItem="ncV-aK-l3Y" secondAttribute="trailing" constant="8" id="zlZ-8I-mTh"/>
@@ -118,28 +119,44 @@
                                             <segue destination="54D-R6-PfT" kind="show" id="uQZ-py-SjH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="nC0-Uu-hxj" detailTextLabel="at3-2u-lEi" style="IBUITableViewCellStyleValue2" id="eGt-0k-p8A">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eGt-0k-p8A">
                                         <rect key="frame" x="0.0" y="152" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eGt-0k-p8A" id="2gY-ya-bJy">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nC0-Uu-hxj">
-                                                    <rect key="frame" x="15" y="15" width="91" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPY-0Y-0Y6">
+                                                    <rect key="frame" x="15" y="15" width="91" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="fEI-Zv-c9f"/>
+                                                        <constraint firstAttribute="width" constant="91" id="gFz-K9-mTj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="at3-2u-lEi">
-                                                    <rect key="frame" x="112" y="15" width="34.5" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oj1-Ti-fGl">
+                                                    <rect key="frame" x="114" y="9" width="478" height="27.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nPY-0Y-0Y6" firstAttribute="leading" secondItem="2gY-ya-bJy" secondAttribute="leadingMargin" constant="7" id="2bo-Ky-1rT"/>
+                                                <constraint firstItem="nPY-0Y-0Y6" firstAttribute="top" secondItem="2gY-ya-bJy" secondAttribute="topMargin" constant="7" id="DbW-gl-bKN"/>
+                                                <constraint firstItem="oj1-Ti-fGl" firstAttribute="leading" secondItem="nPY-0Y-0Y6" secondAttribute="trailing" constant="8" id="aFS-fG-slS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="nPY-0Y-0Y6" secondAttribute="bottom" constant="4.5" id="dHl-km-zgS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oj1-Ti-fGl" secondAttribute="bottom" constant="-1" id="e4q-xN-xCY"/>
+                                                <constraint firstItem="oj1-Ti-fGl" firstAttribute="leading" secondItem="nPY-0Y-0Y6" secondAttribute="trailing" constant="8" id="nAx-3e-fh9"/>
+                                                <constraint firstItem="oj1-Ti-fGl" firstAttribute="trailing" secondItem="2gY-ya-bJy" secondAttribute="trailingMargin" id="nxY-7R-jKk"/>
+                                                <constraint firstItem="oj1-Ti-fGl" firstAttribute="top" secondItem="2gY-ya-bJy" secondAttribute="topMargin" constant="1" id="qYp-ws-uuJ"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="nAx-3e-fh9"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -160,7 +177,7 @@
                     <connections>
                         <outlet property="amountTextField" destination="2s1-Oj-hcY" id="9fL-Pv-Xy0"/>
                         <outlet property="categoryLabel" destination="wev-Fk-Kka" id="XaR-Qq-Tca"/>
-                        <outlet property="dateLabel" destination="at3-2u-lEi" id="bg5-S3-l4n"/>
+                        <outlet property="dateField" destination="oj1-Ti-fGl" id="O13-iC-Ibp"/>
                         <outlet property="plusMinusSegment" destination="ncV-aK-l3Y" id="W3z-Pi-h7q"/>
                         <segue destination="RxX-Gb-5lq" kind="unwind" identifier="delete" unwindAction="unwindAndDeleteMovement:" id="abO-yX-Plr"/>
                     </connections>
@@ -320,6 +337,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3L2-ug-8ix"/>
+        <segue reference="Nbh-Jw-eae"/>
     </inferredMetricsTieBreakers>
 </document>

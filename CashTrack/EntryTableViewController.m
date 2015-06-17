@@ -15,9 +15,11 @@
 @interface EntryTableViewController () <UIAlertViewDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *amountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dateField;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *plusMinusSegment;
+
+@property UIDatePicker *datePicker;
 
 @property NSDateFormatter *dateFormatter;
 
@@ -33,6 +35,11 @@
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    
+    self.datePicker = [[UIDatePicker alloc] init];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    [self.datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    self.dateField.inputView = self.datePicker;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,6 +59,11 @@
     
     CategoryTableViewController *categoryTable = segue.sourceViewController;
     self.movement.category = categoryTable.categoryName;
+}
+
+- (IBAction)unwindAndSetDate:(UIStoryboardSegue *)segue
+{
+    
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -106,7 +118,8 @@
     }
     
     if (self.movement.date != nil) {
-        self.dateLabel.text = [self.dateFormatter stringFromDate:self.movement.date];
+        self.datePicker.date = self.movement.date;
+        self.dateField.text = [self.dateFormatter stringFromDate:self.movement.date];
     }
     
     // Remove the "delete" button if the movement is not saved yet
@@ -157,9 +170,12 @@
     }
 }
 
-- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+- (void)datePickerValueChanged:(id)sender
 {
-    
+    if (sender == self.datePicker) {
+        self.movement.date = self.datePicker.date;
+        [self updateForm];
+    }
 }
 
 @end
